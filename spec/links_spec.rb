@@ -1,3 +1,5 @@
+require './app/models/link'
+
 feature 'Links' do
   scenario 'Viewing links' do
     Link.create(url: 'http://www.makersacademy.com', title: 'Makers Academy')
