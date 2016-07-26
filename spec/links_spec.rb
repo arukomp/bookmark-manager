@@ -2,7 +2,9 @@ require './app/models/link'
 
 feature 'Links' do
   scenario 'Viewing links' do
-    Link.create(url: 'http://www.makersacademy.com', title: 'Makers Academy')
+    @link = Link.create(url: 'http://www.makersacademy.com', title: 'Makers Academy')
+    @link.tags << Tag.create(name: "code")
+    @link.save
     visit '/links'
     expect(page.status_code).to eq 200
 

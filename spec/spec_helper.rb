@@ -1,7 +1,7 @@
 ENV['RACK_ENV'] = 'test'
 
 require 'capybara/rspec'
-require './app/models/link'
+require './app/data_mapper_setup'
 require './app/app'
 Capybara.app = BookMarkManager
 require 'database_cleaner'
