@@ -7,5 +7,14 @@ class BookMarkManager < Sinatra::Base
     erb(:links)
   end
 
+  get '/links/new' do
+    erb(:links_new)
+  end
+
+  post '/links' do
+    Link.create(title: params[:Title], url: params[:URL])
+    redirect '/links'
+  end
+
   run! if app_file ==$0
 end
