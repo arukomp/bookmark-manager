@@ -13,4 +13,9 @@ feature 'user registration' do
     expect(page).to have_content 'Password and confirmation password do not match'
   end
 
+  scenario 'user can not register with an invalid emaill address' do
+    expect {sign_up(email: "")}.not_to change(User, :count)
+    expect(current_path).to eq '/users'
+    
+  end
 end
