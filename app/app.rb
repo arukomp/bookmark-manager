@@ -60,6 +60,21 @@ class Bookmark_manager < Sinatra::Base
     end
   end
 
+  get '/users/login' do
+    erb :'users/login'
+  end
+
+  post '/users/login' do
+    user = User.authenticate(params[:email], params[:password])
+    if user
+      session[:user_id] = user.id
+      redirect '/links'
+    else
+      flash.now[:error] = ["Incorrect email/password combination"]
+      erb :'/users/login'
+    end
+  end
+
   # start the server if ruby file executed directly
   run! if app_file == $0
 end
