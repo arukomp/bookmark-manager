@@ -17,9 +17,18 @@ feature 'user registration' do
     expect {sign_up(email: nil)}.not_to change(User, :count)
     expect(current_path).to eq '/users'
     end
+
     scenario 'user can not register with invalid formatted emaill address' do
       expect {sign_up(email: "bartjudgegmail.com")}.not_to change(User, :count)
       expect(current_path).to eq '/users'
-      end
+    end
+
+    scenario 'cannot sign up with already registered address' do
+      
+      sign_up
+      expect{ sign_up }.not_to change(User, :count)
+      expect(page).to have_content 'Email already registered'
+
+    end
 
 end
