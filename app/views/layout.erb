@@ -5,17 +5,9 @@
   </head>
 
   <body>
-    <% if current_user %>
-    Welcome, <%= current_user.email %><br>
-    <form action="/users/logout" method="post">
-      <input type="submit" value="Log out">
-    </form>
-    <% end %>
-    <% if flash[:error] %>
-    <% flash[:error].each do |error| %>
-      <div><%= error %></div>
-    <% end %>
-    <% end %>
+    <%= partial :top %>
+    <%= partial :flash %>
     <%= yield %>
+    <%= partial :bottom %>
   </body>
   </html>
