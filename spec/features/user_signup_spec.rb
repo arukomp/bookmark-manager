@@ -1,5 +1,3 @@
-require_relative 'web_helper'
-
 feature 'user registration' do
   scenario 'allow a new user to sign up' do
     expect{ sign_up }.to change(User, :count).by (1)
@@ -24,7 +22,7 @@ feature 'user registration' do
     end
 
     scenario 'cannot sign up with already registered address' do
-      
+
       sign_up
       expect{ sign_up }.not_to change(User, :count)
       expect(page).to have_content 'Email already registered'

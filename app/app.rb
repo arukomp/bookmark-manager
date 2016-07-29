@@ -64,6 +64,12 @@ class Bookmark_manager < Sinatra::Base
     erb :'users/login'
   end
 
+  post '/users/logout' do
+    flash[:error] = ["Goodbye, #{current_user.email}"]
+    session[:user_id] = nil
+    redirect '/links'
+  end
+
   post '/users/login' do
     user = User.authenticate(params[:email], params[:password])
     if user

@@ -9,10 +9,13 @@ require 'capybara/rspec'
 require 'rspec'
 require './app/models/link'
 require 'database_cleaner'
+require_relative 'helpers/session'
 
 Capybara.app = Bookmark_manager
 
 RSpec.configure do |config|
+
+  config.include SessionHelpers
   # Everything in this block runs once before all the tests run
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction

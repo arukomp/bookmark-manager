@@ -6,7 +6,10 @@
 
   <body>
     <% if current_user %>
-    Welcome, <%= current_user.email %>
+    Welcome, <%= current_user.email %><br>
+    <form action="/users/logout" method="post">
+      <input type="submit" value="Log out">
+    </form>
     <% end %>
     <% if flash[:error] %>
     <% flash[:error].each do |error| %>
