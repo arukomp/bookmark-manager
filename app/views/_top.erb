@@ -3,4 +3,11 @@
   <form action="/users/logout" method="post">
     <input type="submit" value="Log out">
   </form>
+<% else %>
+  Welcome, guest<br>
+  <form>
+    <button formaction="/users/new" type="submit">Sign Up</button>
+    or
+    <button formaction="/users/login" type="submit">Log In</button>
+  </form>
 <% end %>
